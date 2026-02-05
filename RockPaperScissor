@@ -1,0 +1,53 @@
+const getUserChoice = function(userInput){
+  userInput = userInput.toLowerCase();
+  if(userInput == 'rock' || userInput == 'paper' || userInput == 'scissor' || userInput == 'bomb'){
+    return(userInput);
+  } else {
+    console.log('Invalid input');
+  }
+}
+
+const getComputerChoice = function(){
+  const randomNumber = Math.floor(Math.random() * 3);
+  if(randomNumber == 0){
+    return('rock');
+  } else if (randomNumber == 1){
+    return('paper');
+  }else{
+    return('scissor');
+  }
+}
+
+const determineWinner = function(userChoice, computerChoice){
+  if(userChoice == computerChoice){
+    return("tie");
+  }else if (userChoice == 'rock'){
+    if(computerChoice == 'scissor'){
+      return('you won');
+    }else{
+      return('computer won');
+    }
+  }else if (userChoice == 'scissor'){
+    if(computerChoice == 'paper'){
+      return('you won');
+    }else{
+      return('computer won');
+    }
+  }else if (userChoice == 'paper'){
+    if(computerChoice == 'rock'){
+      return('you won');
+    }else{
+      return('computer won');
+    }
+  }else if (userChoice == 'bomb'){
+    return('you won');
+  }
+}
+const playGame = function(){
+  const userChoice = getUserChoice('rock');
+  const computerChoice = getComputerChoice();
+  console.log(userChoice);
+  console.log(computerChoice);
+  console.log(determineWinner(userChoice, computerChoice));
+}
+playGame();
